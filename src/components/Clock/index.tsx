@@ -10,10 +10,12 @@ const Clock: React.FC<ClockProps> = ({ timezone }) => {
     const [time, setTime] = useState<Date | null>(null);
     const [date, setDate] = useState(new Date());
 
+    const timeApiKey = 'EQYC5HBL0PC7' // this must be in env
+
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch(`http://api.timezonedb.com/v2.1/get-time-zone?key=EQYC5HBL0PC7&format=json&by=zone&zone=${timezone}`);
+                const response = await fetch(`https://api.timezonedb.com/v2.1/get-time-zone?key=${timeApiKey}&format=json&by=zone&zone=${timezone}`);
                 const data = await response.json();
                 const dateTime = new Date(data.formatted);
                 setTime(dateTime);
