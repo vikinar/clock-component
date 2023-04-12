@@ -1,0 +1,26 @@
+.clock-face {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border: 10px solid #000;
+  background: white;
+  border-radius: 500px;
+
+  .number {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #000;
+    transform: translate(-50%, -50%);
+  }
+  @for $i from 1 through 12 {
+    .number-#{$i} {
+      position: absolute;
+      font-size: 1.2em;
+      font-weight: bold;
+      color: #000;
+      transform: translate(-50%, -50%);
+      top: calc(50% - 42% * cos($i * 30deg));
+      left: calc(50% + 42% * sin($i * 30deg));
+    }
+  }
+}
